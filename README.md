@@ -33,9 +33,7 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
       * H_OSM_ADMINISTRATIF
       * I_OSM_ZONE_ACTIVITE
       * T_OSM_TOPONYMES
-  3. ils exploitent la puissance d'ogr2ogr pour traiter l'information
-
-    Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
+  3. ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
 
   4. à chaque script "esclave" est associé un fichier xxx_osmconf.ini
 
