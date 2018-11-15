@@ -6,7 +6,7 @@
 
 Utiliser la richesse des informations disponibles dans [OpenStreetMap](http://www.openstreetmap.fr) et les valoriser sous la forme d'une pseudo "BDTOPO® | IGN" afin qu'elles puissent facilement être exploitées dans une application SIG.
 
-![Exemple sur Limoges](/exemples_visuels/exemple1.png)
+![Exemple sur Limoges](/exemples_visuels/exemple1.jpg)
 
 #### Pourquoi cette idée ?
 
