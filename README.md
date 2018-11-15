@@ -1,14 +1,14 @@
-# osm2igeo
+# **osm2igeo**
 
-**[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)**
+**[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7) (Découpage suivant les anciennes régions)**
 
-#### Objectif du projet
+## Objectif du projet
 
 Utiliser la richesse des informations disponibles dans [OpenStreetMap](http://www.openstreetmap.fr) et les valoriser sous la forme d'une pseudo "BDTOPO® | IGN" afin qu'elles puissent facilement être exploitées dans une application SIG.
 
 ![Exemple sur Limoges](/exemples_visuels/exemple1.jpg)
 
-#### Pourquoi cette idée ?
+## Pourquoi cette idée ?
 
 Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur utilisation par des géomaticiens :
 > La structure de la base de données sous-jacente est [...] un peu complexe et nécessite un investissement chronophage pour réussir ses extractions. Il faut quelques connaissances en géomatique pour plonger dans le bain de données OSM. Le format du fichier .osm, xml tout en un, est déroutant pour les utilisateurs de SIG et les statisticiens. Le fichier .osm est un format texte balisé (xml) facile à manipuler par les développeurs. Mais il l’est beaucoup moins par les analystes. Les informations ne sont pas tabulées en colonne et les objets géographiques sont, le plus souvent, mal lus par les SIG classiques. QGIS réussit à lire nativement les fichers .osm. Mais il est impossible d’espérer lire et requêter sur un fichier France.osm directement : les structure et volumétrie de données [...] ne passent pas…   
@@ -17,7 +17,7 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
  Partant de ce constat, l'idée était donc de créer une solution permettant d'exploiter la masse d'informations présente dans OSM pour en faire un produit "SIG" facilement exploitable.
 
-#### Fonctionnement d'osm2igeo
+## Fonctionnement d'osm2igeo
 
 1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
   * le script permettant le téléchargement des données : 00_Script_download.sh
