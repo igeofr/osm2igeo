@@ -22,19 +22,19 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
   * le script permettant le téléchargement des données : 00_Script_download.sh
 2. Un script "maître" fait appelle à une série de scripts "esclaves" et qui font eux-mêmes appellent à ogr2ogr pour mettre en forme et convertir la donnée au format .shp (En projet : .gpk)
-  *  le script "maître" : 01_Script_complet.sh
-  *  les scripts "esclaves" sont classés par grandes catégories :
-      * A_OSM_RESEAU_ROUTIER
-      * B_OSM_VOIES_FERREES_ET_AUTRES
-      * C_OSM_TRANSPORT_ENERGIE
-      * D_OSM_HYDROGRAPHIE
-      * E_OSM_BATI
-      * F_OSM_VEGETATION
-      * H_OSM_ADMINISTRATIF
-      * I_OSM_ZONE_ACTIVITE
-      * T_OSM_TOPONYMES
-  * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
-  * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
+    *  le script "maître" : 01_Script_complet.sh
+    *  les scripts "esclaves" sont classés par grandes catégories :
+        * A_OSM_RESEAU_ROUTIER
+        * B_OSM_VOIES_FERREES_ET_AUTRES
+        * C_OSM_TRANSPORT_ENERGIE
+        * D_OSM_HYDROGRAPHIE
+        * E_OSM_BATI
+        * F_OSM_VEGETATION
+        * H_OSM_ADMINISTRATIF
+        * I_OSM_ZONE_ACTIVITE
+        * T_OSM_TOPONYMES
+    * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
+    * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
 
   Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
 
