@@ -93,5 +93,5 @@ Pour toute question concernant le projet ou le jeu de données, vous pouvez me c
 ## Licence
 Les données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.
 
-* Pour la mention d'attribution veuillez indiquer "source: OSM2IGEO par Data\Wax" ainsi que la date du jeu de données.
-* Pour le partage à l'identique, toute amélioration des données de OSM2IGEO doit être repartagée sous licence identique.
+* Pour la mention d'attribution veuillez indiquer "source: osm2igeo par Data\Wax" ainsi que la date du jeu de données.
+* Pour le partage à l'identique, toute amélioration des données de osm2igeo doit être repartagée sous licence identique.
