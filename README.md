@@ -65,7 +65,7 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 * Shapefile
 * Geopackage (Bientôt)
 
-*Il est possible d'envisager d'autres formats si le besoin se fait sentir*
+*Il est possible d'envisager d'autres formats si le besoin se fait sentir.*
 
 ## Projections disponibles
 
