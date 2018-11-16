@@ -1,1 +1,1 @@
-cc-by-sa-4.0
+license:cc-by-sa-4.0
