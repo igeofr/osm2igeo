@@ -38,9 +38,32 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
   Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
 
+## Les points forts
+
+  * Donnée ouverte basée sur le projet collaboratif [OpenStreetMap](http://www.openstreetmap.fr)
+  * Couverture régionale
+  * Mise à jour en continu
+
+## Les points faibles
+
+  * Hétérogénéité spatiale & attributaire (Hétérogénéités des sources et des compétences des contributeurs)
+
+## Formats
+
+* Shapefile
+* Geopackage (Bientôt)
+
+## Projections disponibles
+
+Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
+
 ## Pistes d'évolution
+* Créer un wiki pour décrire les couches/requêtes
+* Compléter les métadonnées de chacune des couches
 * Compléter/affiner certaines requêtes
-* Générer du geopackage (EN COURS)
+* Améliorer le rendu du projet QGIS
+* Générer du geopackage (EN COURS) et créer un projet associé
+
 * Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
 
 
