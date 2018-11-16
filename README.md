@@ -38,12 +38,22 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
   Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
 
+---
+## Les données générées
+**[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7) (Découpage suivant les anciennes régions)**
+
+## Origine des données
+
+Les données OSM utilisées pour générer ces fichiers régionaux proviennent de [Geofabrik](https://download.geofabrik.de/europe/france.html).
+
+*Il est possible d'utiliser des données OSM provenant d'autres sources.*
+
 ## Les points forts
 
   * Adaptabilité de la chaîne
   * Donnée ouverte basée sur le projet collaboratif [OpenStreetMap](http://www.openstreetmap.fr)
   * Couverture régionale
-  * Mise à jour en continu
+  * Mise à jour en continu possible
 
 ## Les points faibles
 
@@ -71,5 +81,10 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 
 * Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
 
+## Licence
+Ces données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.
 
-## A vous de jouer maintenant!
+* Pour la mention d'attribution veuillez indiquer "source: OSM2IGEO by Data\Wax" ainsi que la date du jeu de données.
+* Pour le partage à l'identique, toute amélioration des données de OSM2IGEO doit être repartagée sous licence identique.
+
+Merci de nous faire remonter : les erreurs et/ou les problèmes que vous rencontrez.
