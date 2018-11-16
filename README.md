@@ -73,7 +73,7 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 
 *Il est possible de générer les fichiers dans d'autres systèmes de projection en modifiant les variables dans les scripts.*
 
-## Mise à jour
+## Mises à jour
 Une mise à jour est prévue pour chaque mois.
 
 ## Pistes d'évolution
