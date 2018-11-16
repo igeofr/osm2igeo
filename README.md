@@ -2,6 +2,7 @@
 
 **[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7) (Découpage suivant les anciennes régions)**
 
+---
 ## Objectif du projet
 
 Utiliser la richesse des informations disponibles dans [OpenStreetMap](http://www.openstreetmap.fr) et les valoriser sous la forme d'une pseudo "BDTOPO® | IGN" afin qu'elles puissent facilement être exploitées dans une application SIG.
