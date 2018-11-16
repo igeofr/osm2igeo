@@ -59,7 +59,7 @@ Une mise à jour est prévue pour chaque mois.
 
 ## Fonctionnement de la chaine osm2igeo
 
-1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
+1. Les données OSM sont récupérées au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
     * le script permettant le téléchargement des données : 00_Script_download.sh
 2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
     *  le script "maître" : 01_Script_complet.sh
