@@ -40,6 +40,7 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
 ## Les points forts
 
+  * Adaptabilité de la chaîne
   * Donnée ouverte basée sur le projet collaboratif [OpenStreetMap](http://www.openstreetmap.fr)
   * Couverture régionale
   * Mise à jour en continu
@@ -53,9 +54,13 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 * Shapefile
 * Geopackage (Bientôt)
 
+*Il est possible d'envisager d'autres formats si le besoin se fait sentir*
+
 ## Projections disponibles
 
 Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
+
+*Il est possible de générer les fichiers dans d'autres systèmes de projection en modifiant les variables dans les scripts.*
 
 ## Pistes d'évolution
 * Créer un wiki pour décrire les couches/requêtes
