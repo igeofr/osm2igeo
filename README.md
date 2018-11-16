@@ -1,6 +1,6 @@
 # **osm2igeo**
 
-**[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7) (Découpage suivant les anciennes régions)**
+**[Pour télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
 
 ---
 ## Objectif du projet
@@ -18,30 +18,11 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
  Partant de ce constat, l'idée était donc de trouver une solution permettant d'exploiter la masse d'informations présente dans OSM pour en faire un produit "SIG" facilement exploitable.
 
-## Fonctionnement d'osm2igeo
 
-1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
-    * le script permettant le téléchargement des données : 00_Script_download.sh
-2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
-    *  le script "maître" : 01_Script_complet.sh
-    *  les scripts "esclaves" sont classés par grandes catégories :
-        * A_OSM_RESEAU_ROUTIER
-        * B_OSM_VOIES_FERREES_ET_AUTRES
-        * C_OSM_TRANSPORT_ENERGIE
-        * D_OSM_HYDROGRAPHIE
-        * E_OSM_BATI
-        * F_OSM_VEGETATION
-        * H_OSM_ADMINISTRATIF
-        * I_OSM_ZONE_ACTIVITE
-        * T_OSM_TOPONYMES
-    * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
-    * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
-
-  Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
-
----
 ## Les données générées
-**[Pour télécharger les données disponibles sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7) (Découpage suivant les anciennes régions)**
+**[Pour télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
+
+**Attention :** Les fichiers en générés ne respectent pas les spécifications de la BD TOPO ils visent seulement à s'en rapprocher pour pallier à un besoin de données/informations.
 
 ## Origine des données
 
@@ -76,6 +57,27 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 ## Mises à jour
 Une mise à jour est prévue pour chaque mois.
 
+## Fonctionnement d'osm2igeo
+
+1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
+    * le script permettant le téléchargement des données : 00_Script_download.sh
+2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
+    *  le script "maître" : 01_Script_complet.sh
+    *  les scripts "esclaves" sont classés par grandes catégories :
+        * A_OSM_RESEAU_ROUTIER
+        * B_OSM_VOIES_FERREES_ET_AUTRES
+        * C_OSM_TRANSPORT_ENERGIE
+        * D_OSM_HYDROGRAPHIE
+        * E_OSM_BATI
+        * F_OSM_VEGETATION
+        * H_OSM_ADMINISTRATIF
+        * I_OSM_ZONE_ACTIVITE
+        * T_OSM_TOPONYMES
+    * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
+    * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
+
+  Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
+
 ## Pistes d'évolution
 * Créer un wiki pour décrire les couches/requêtes
 * Compléter les métadonnées de chacune des couches
@@ -85,13 +87,19 @@ Une mise à jour est prévue pour chaque mois.
 
 * Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
 
-## Questions/remarques
-Merci de nous faire remonter : les erreurs et/ou les problèmes que vous rencontrez.
-
-Pour toute question concernant le projet ou le jeu de données, vous pouvez me contacter : florian.boret)at(data-wax.com
-
 ## Licence
 Les données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.
 
 * Pour la mention d'attribution veuillez indiquer "source: osm2igeo par Data\Wax" ainsi que la date du jeu de données.
 * Pour le partage à l'identique, toute amélioration des données de osm2igeo doit être repartagée sous licence identique.
+
+## Le mot de la fin
+Merci de nous faire remonter : les erreurs et/ou les problèmes que vous rencontrez.
+
+Pour toute question concernant le projet ou le jeu de données, vous pouvez me contacter : florian.boret)at(data-wax.com
+
+---
+## Pour aller plus loin :
+* [Récupérer des données OpenStreetMap via GDAL/OGR](http://www.portailsig.org/content/recuperer-des-donnees-openstreetmap-gdalogr)  
+* [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
+* [Comment accéder en masse aux informations vectorielles d'Open Street Map ?](http://tempogeo.blogspot.com/2016/12/comment-acceder-en-masse-aux.html)
