@@ -1,0 +1,3 @@
+Ces données sont sous licence ODbL (Open Database Licence). Cette licence implique: l'attribution et le partage à l'identique.
+	•	Pour la mention d'attribution veuillez indiquer « source: osm2igeo par Data-Wax » ainsi que la date du jeu de données.
+	•	Pour le partage à l'identique, toute amélioration des données de osm2igeo doit être repartagée sous licence identique. Merci de nous faire remonter: les erreurs ou les problèmes que vous rencontrez.
