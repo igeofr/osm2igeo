@@ -1,6 +1,6 @@
 # **osm2igeo**
 
-**[Pour télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
+**[Télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
 
 ---
 ## Objectif du projet
@@ -20,7 +20,7 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
 
 ## Les données générées
-**[Pour télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
+**[Télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
 
 **Attention :** Les fichiers en générés ne respectent pas les spécifications de la BD TOPO ils visent seulement à s'en rapprocher pour pallier à un besoin de données/informations.
 
