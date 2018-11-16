@@ -15,13 +15,13 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
 *Source : [Comment accéder en masse aux informations vectorielles d'Open Street Map ?](http://tempogeo.blogspot.com/2016/12/comment-acceder-en-masse-aux.html)*
 
- Partant de ce constat, l'idée était donc de créer une solution permettant d'exploiter la masse d'informations présente dans OSM pour en faire un produit "SIG" facilement exploitable.
+ Partant de ce constat, l'idée était donc de trouver une solution permettant d'exploiter la masse d'informations présente dans OSM pour en faire un produit "SIG" facilement exploitable.
 
 ## Fonctionnement d'osm2igeo
 
 1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
     * le script permettant le téléchargement des données : 00_Script_download.sh
-2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp (En projet : .gpk)
+2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
     *  le script "maître" : 01_Script_complet.sh
     *  les scripts "esclaves" sont classés par grandes catégories :
         * A_OSM_RESEAU_ROUTIER
@@ -72,6 +72,9 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 
 *Il est possible de générer les fichiers dans d'autres systèmes de projection en modifiant les variables dans les scripts.*
 
+## Mise à jour
+Une mise à jour est prévue pour chaque mois.
+
 ## Pistes d'évolution
 * Créer un wiki pour décrire les couches/requêtes
 * Compléter les métadonnées de chacune des couches
@@ -81,10 +84,13 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 
 * Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
 
-## Licence
-Ces données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.
-
-* Pour la mention d'attribution veuillez indiquer "source: OSM2IGEO by Data\Wax" ainsi que la date du jeu de données.
-* Pour le partage à l'identique, toute amélioration des données de OSM2IGEO doit être repartagée sous licence identique.
-
+## Questions/remarques
 Merci de nous faire remonter : les erreurs et/ou les problèmes que vous rencontrez.
+
+Pour toute question concernant le projet ou le jeu de données, vous pouvez me contacter : florian.boret)at(data-wax.com
+
+## Licence
+Les données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.
+
+* Pour la mention d'attribution veuillez indiquer "source: OSM2IGEO par Data\Wax" ainsi que la date du jeu de données.
+* Pour le partage à l'identique, toute amélioration des données de OSM2IGEO doit être repartagée sous licence identique.
