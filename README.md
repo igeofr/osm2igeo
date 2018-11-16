@@ -57,7 +57,7 @@ Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
 ## Mises à jour
 Une mise à jour est prévue pour chaque mois.
 
-## Fonctionnement d'osm2igeo
+## Fonctionnement de la chaine osm2igeo
 
 1. La donnée OSM est récupérée au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
     * le script permettant le téléchargement des données : 00_Script_download.sh
