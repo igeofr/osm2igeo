@@ -38,4 +38,10 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
   Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
 
+## Pistes d'évolution
+* Compléter/affiner certaines requêtes
+* Générer du geopackage (EN COURS)
+* Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
+
+
 ## A vous de jouer maintenant!
