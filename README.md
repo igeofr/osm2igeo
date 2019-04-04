@@ -50,9 +50,9 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 
 ## Projections disponibles
 
-Pour la France métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
-Pour la Belgique : (ETRS89) projection Lambert 2008 (EPSG : 3812)
-Pour les différents pays d'Afrique : (WGS84) projection WGS84 (EPSG : 4326)
+* Pour la France métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
+* Pour la Belgique : (ETRS89) projection Lambert 2008 (EPSG : 3812)
+* Pour les différents pays d'Afrique : (WGS84) projection WGS84 (EPSG : 4326)
 
 *Il est possible de générer les fichiers dans d'autres systèmes de projection en modifiant les variables dans les scripts.*
 
