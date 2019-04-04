@@ -63,7 +63,7 @@ Une mise à jour est disponible chaque mois.
 
 1. Les données OSM sont récupérées au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
     * les script permettant le téléchargement des données : 00_Download
-2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
+2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et .gpk
     *  des scripts "maître" : 01_Script_pays
     *  les scripts "esclaves" sont classés par grandes catégories :
         * A_OSM_RESEAU_ROUTIER
