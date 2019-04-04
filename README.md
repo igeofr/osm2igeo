@@ -44,25 +44,27 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 ## Formats
 
 * Shapefile
-* Geopackage (Bientôt)
+* Geopackage (Ce format est produit mais pas publié car notre serveur est un peu trop petit. N'hésitez pas à nous envoyer un mail en cas de besoin))
 
 *Il est possible d'envisager d'autres formats si le besoin se fait sentir.*
 
 ## Projections disponibles
 
-Pour la métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
+Pour la France métropole : (RGF 93) projection Lambert-93 (EPSG : 2154)
+Pour la Belgique : (ETRS89) projection Lambert 2008 (EPSG : 3812)
+Pour les différents pays d'Afrique : (WGS84) projection WGS84 (EPSG : 4326)
 
 *Il est possible de générer les fichiers dans d'autres systèmes de projection en modifiant les variables dans les scripts.*
 
 ## Mises à jour
-Une mise à jour est prévue pour chaque mois.
+Une mise à jour est disponible chaque mois.
 
 ## Fonctionnement de la chaine osm2igeo
 
 1. Les données OSM sont récupérées au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
-    * le script permettant le téléchargement des données : 00_Script_download.sh
+    * les script permettant le téléchargement des données : 00_Download
 2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp et prochainement .gpk
-    *  le script "maître" : 01_Script_complet.sh
+    *  des scripts "maître" : 01_Script_pays
     *  les scripts "esclaves" sont classés par grandes catégories :
         * A_OSM_RESEAU_ROUTIER
         * B_OSM_VOIES_FERREES_ET_AUTRES
@@ -83,9 +85,6 @@ Une mise à jour est prévue pour chaque mois.
 * Compléter les métadonnées de chacune des couches
 * Compléter/affiner certaines requêtes
 * Améliorer le rendu du projet QGIS
-* Générer du geopackage (EN COURS) et créer un projet associé
-
-* Adapter les scripts pour générer de la donnée sur l'Afrique de l'Ouest
 
 ## Licence
 Les données sont fournies sous licence ODbL (Open Database Licence). Cette licence implique : l'attribution et le partage à l'identique.

@@ -1,17 +1,20 @@
 #Variable
 export REPER=/home/datafolder
+export PAYS=REPUBLIQUE_CENTRAFRICAINE
 
-cd $REPER/data_in
+cd $REPER/data_in/AFRIQUE/
 
-for file in *.pbf
+for file in $PAYS.pbf
 
 do
     #Variables
-    export OUT_EPSG=2154
+    export OUT_EPSG=4326
     export LINK_OGR=ogr2ogr
-    export DATA_IN=data_in/${file}
+    export DATA_IN=data_in/AFRIQUE/${file}
     export ENCODAGE=UTF-8
-    export DATE=$(date '+%Y%m%d')
+    export DATE=$(date '+%Y%m')
+    export EMPRISE='-180 -90 180 90'
+    export NZ='_WGS84_4326'
 
     cd $REPER/data_temp
     rm -rfv *
@@ -133,12 +136,10 @@ do
     #----------------------------------------------------------------------------------
     #H_OSM_ADMINISTRATIF
     mkdir data_temp/H_OSM_ADMINISTRATIF
-        #Couche ARRONDISSEMENT
-        sh Scripts/H_OSM_ADMINISTRATIF/ARRONDISSEMENT.sh > data_temp/H_OSM_ADMINISTRATIF/ARRONDISSEMENT.txt 2>&1
-        #Couche COMMUNE
-        sh Scripts/H_OSM_ADMINISTRATIF/COMMUNE.sh > data_temp/H_OSM_ADMINISTRATIF/COMMUNE.txt 2>&1
+        #Couche PREFECTURE
+        sh Scripts/H_OSM_ADMINISTRATIF/PREFECTURE_REPUBLIQUE_CENTRAFICAINE.sh > data_temp/H_OSM_ADMINISTRATIF/PREFECTURE.txt 2>&1
         #Couche CHEF LIEU
-        sh Scripts/H_OSM_ADMINISTRATIF/CHEF_LIEU.sh > data_temp/H_OSM_ADMINISTRATIF/CHEF_LIEU.txt 2>&1
+        sh Scripts/H_OSM_ADMINISTRATIF/CHEF_LIEU_POINT.sh > data_temp/H_OSM_ADMINISTRATIF/CHEF_LIEU.txt 2>&1
     #----------------------------------------------------------------------------------
     #I_OSM_ZONE_ACTIVITE
     mkdir data_temp/I_OSM_ZONE_ACTIVITE
@@ -317,20 +318,46 @@ do
             sh Scripts/T_OSM_TOPONYMES/TOPONYME_DIVERS_merge.sh
         rm -r data_temp/T_OSM_TOPONYMES/TOPONYME_DIVERS
 
-    rm -r data_out/$DATE/${file%%.*}
-    mkdir data_out/$DATE
-    mkdir data_out/$DATE/${file%%.*}
-    cp -r data_temp/* data_out/$DATE/${file%%.*}/
-    cp X_PROJET_V3.qgs.qgz data_out/$DATE/${file%%.*}/X_PROJET_V3.qgs.qgz
+    #----------------------------------------------------------------------------------
+    #SORTIE SHP
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ
+    mkdir data_out/$PAYS
+    
+    
+    mkdir data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ
+    cp -r data_temp/* data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/
+    cp X_PROJET_V3_$PAYS'_SHP_'$OUT_EPSG.qgs.qgz data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/X_PROJET_V3.qgs.qgz
+    cp X_Licence.txt data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/X_Licence.txt
 
-    rm -r data_out/$DATE/${file%%.*}/A_OSM_RESEAU_ROUTIER/*.txt
-    rm -r data_out/$DATE/${file%%.*}/B_OSM_VOIES_FERREES_ET_AUTRES/*.txt
-    rm -r data_out/$DATE/${file%%.*}/C_OSM_TRANSPORT_ENERGIE/*.txt
-    rm -r data_out/$DATE/${file%%.*}/D_OSM_HYDROGRAPHIE/*.txt
-    rm -r data_out/$DATE/${file%%.*}/E_OSM_BATI/*.txt
-    rm -r data_out/$DATE/${file%%.*}/F_OSM_VEGETATION/*.txt
-    rm -r data_out/$DATE/${file%%.*}/H_OSM_ADMINISTRATIF/*.txt
-    rm -r data_out/$DATE/${file%%.*}/I_OSM_ZONE_ACTIVITE/*.txt
-    rm -r data_out/$DATE/${file%%.*}/T_OSM_TOPONYMES/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/A_OSM_RESEAU_ROUTIER/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/B_OSM_VOIES_FERREES_ET_AUTRES/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/C_OSM_TRANSPORT_ENERGIE/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/D_OSM_HYDROGRAPHIE/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/E_OSM_BATI/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/F_OSM_VEGETATION/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/H_OSM_ADMINISTRATIF/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/I_OSM_ZONE_ACTIVITE/*.txt
+    rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/T_OSM_TOPONYMES/*.txt
+
+    #----------------------------------------------------------------------------------
+    #SORTIE GEOPACKAGE
+    
+    mkdir data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ
+    cp X_PROJET_V3_$PAYS'_GEOPACKAGE_'$OUT_EPSG.qgs.qgz data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ/X_PROJET_V3.qgs.qgz
+    cp X_Licence.txt data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ/X_Licence.txt
+    for d in data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ/*;
+    do
+      for file_shp in $d/*.shp
+      do
+          $LINK_OGR -progress -s_srs EPSG:$OUT_EPSG -t_srs EPSG:$OUT_EPSG -append -update -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES -lco OVERWRITE=YES --debug ON -f "GPKG" data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ/${d##*/}.gpkg ${file_shp}
+      done
+    done
+
+    #----------------------------------------------------------------------------------
+    #ZIP
+    #zip -r ${file%%.*}$NZ.zip data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ
+    #zip -r ${file%%.*}$NZ.zip data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ
+    #rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_SHP'$NZ
+    #rm -r data_out/$PAYS/$DATE'_'${file%%.*}'_GEOPACKAGE'$NZ
 
 done
