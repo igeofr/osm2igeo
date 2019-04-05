@@ -34,7 +34,7 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 
   * Adaptabilité de la chaîne
   * Donnée ouverte basée sur le projet collaboratif [OpenStreetMap](http://www.openstreetmap.fr)
-  * Couverture régionale
+  * Couverture régionale/nationale
   * Mise à jour en continu possible
 
 ## Les points faibles
