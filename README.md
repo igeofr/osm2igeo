@@ -1,6 +1,6 @@
 # **osm2igeo**
 
-**[Télécharger les données générées sur la France métropolitaine](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (Découpage suivant les anciennes régions)
+**[Télécharger les données générées sur la France métropolitaine, les DOM-TOM, la Belgique et l'Afrique Francophone](https://cloud.data-wax.com/index.php/s/myFFjcLzMFk9QB7)** (France : Découpage suivant les anciennes régions)
 
 ---
 ## Objectif du projet
@@ -39,7 +39,7 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 
 ## Les points faibles
 
-  * Hétérogénéité spatiale & attributaire (Hétérogénéités des sources et des compétences des contributeurs)
+  * Hétérogénéité spatiale & attributaire (Hétérogénéités des sources et des compétences des contributeurs)
 
 ## Formats
 
