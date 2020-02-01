@@ -1,6 +1,6 @@
 # **osm2igeo**
 
-**[Télécharger les données générées sur la France métropolitaine, les DOM-TOM, la Belgique et l'Afrique Francophone](https://cloud.data-wax.com/index.php/s/djT5LxtrnsP9iKS)** (France : Découpage suivant les anciennes régions)
+**[Télécharger les données générées sur la France métropolitaine, les DOM-TOM, la Belgique et l'Afrique Francophone](https://data.data-wax.com/OSM2IGEO/)** (France : Découpage suivant les anciennes régions)
 
 ---
 ## Objectif du projet
