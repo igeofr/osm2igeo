@@ -7,7 +7,7 @@
 
 Utiliser la richesse des informations disponibles dans [OpenStreetMap](http://www.openstreetmap.fr) et les valoriser sous la forme d'une pseudo "BDTOPO® | IGN" afin qu'elles puissent facilement être exploitées dans une application SIG.
 
-![Exemple sur Limoges](/exemples_visuels/exemple2.jpg)
+![Exemple sur Montpellier](/exemples_visuels/exemple2.jpg)
 
 ## Pourquoi cette idée ?
 
@@ -83,6 +83,8 @@ Une mise à jour sera disponible chaque mois.
         * H_OSM_ADMINISTRATIF
         * I_OSM_ZONE_ACTIVITE
         * T_OSM_TOPONYMES
+        * X_OSM_TOPO
+        * Y_OSM_ENVIRONNEMENT
     * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
     * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
 3. Pour lancer le traitement sur :
