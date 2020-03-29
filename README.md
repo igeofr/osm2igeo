@@ -70,7 +70,7 @@ Une mise à jour sera disponible chaque mois.
 ## Fonctionnement de la chaine osm2igeo
 
 1. Les données OSM sont récupérées au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
-    * les script permettant le téléchargement des données : 00_Download_...
+    * les script permettant le téléchargement des données : 00_Download
 2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp (ou prochainement .gpk)
     *  un script "maître" : 01_OSM2IGEO_SHP
     *  les scripts "esclaves" sont classés par grandes catégories :
@@ -98,7 +98,7 @@ Une mise à jour sera disponible chaque mois.
 
 ## Pistes d'évolution
 * Générer du geopackage (.gpk) en sortie (permettra de s'affranchir des limites du shp : [Switch from Shapefile](http://switchfromshapefile.org))
-* Intégrer le téléchargement dans le script "maître"
+* Intégrer le téléchargement des fichiers .pbf dans le script "maître"
 * Créer un wiki pour décrire les couches/requêtes
 * Compléter les métadonnées de chacune des couches
 * Compléter/affiner certaines requêtes
