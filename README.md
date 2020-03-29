@@ -20,7 +20,7 @@ Je rejoins ce qu'à écrit P. Archambault au sujet des données OSM et de leur u
 
 
 ## Les données générées
-**[Télécharger les données générées sur la France métropolitaine](https://data.data-wax.com/OSM2IGEO/FRANCE)** (Découpage suivant les anciennes régions)
+**[Télécharger les données générées sur la France métropolitaine](https://data.data-wax.com/?dir=OSM2IGEO/FRANCE)** (Découpage suivant les anciennes régions)
 
 **Attention :** Les fichiers en générés ne respectent pas les spécifications de la BD TOPO ils visent seulement à s'en rapprocher pour pallier à un besoin de données/informations.
 
