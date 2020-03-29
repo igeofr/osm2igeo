@@ -1,5 +1,7 @@
-echo debut
-$LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/B_OSM_VOIES_FERREES_ET_AUTRES/TRONCON_VOIE_FERREE.shp' -dialect SQLITE -sql "SELECT * FROM (
+#!/bin/bash
+
+echo "Debut : B_OSM_VOIES_FERREES_ET_AUTRES > TRONCON_VOIE_FERREE.shp"
+$LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/'$PAYS/$OUT_EPSG'/B_OSM_VOIES_FERREES_ET_AUTRES/TRONCON_VOIE_FERREE.shp' -dialect SQLITE -sql "SELECT * FROM (
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------ TRONCON VOIE FERREE ---------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
@@ -37,11 +39,15 @@ CASE
   WHEN electrified='electrified' THEN 'Electrique'
   WHEN electrified='no' THEN 'Non électrique'
   ELSE 'NC'
-END AS "ELECTRIFIE"
+END AS "ELECTRIFIE",
+-----------------------------------------
+'OpenStreetMap' AS "SOURCE",
+-----------------------------------------
+SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
 FROM lines WHERE railway <>'abandoned' AND railway<>'razed' AND railway<>'dismantled' AND railway<>'platform' AND railway<>'level_crossing' AND railway<>'turntable'
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
-)" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config OSM_CONFIG_FILE 'Scripts/B_OSM_VOIES_FERREES_ET_AUTRES/TRONCON_VOIE_FERREE_osmconf.ini'
-echo fin
+)" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config CPL_TMPDIR 'data_tmp/' --config OSM_MAX_TMPFILE_SIZE 4096 --config OSM_CONFIG_FILE 'scripts/B_OSM_VOIES_FERREES_ET_AUTRES/TRONCON_VOIE_FERREE_osmconf.ini'
+echo "Fin : B_OSM_VOIES_FERREES_ET_AUTRES > TRONCON_VOIE_FERREE.shp"

@@ -1,5 +1,7 @@
-echo debut
-$LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/A_OSM_RESEAU_ROUTIER/ROUTE.shp' -dialect SQLITE -sql "SELECT * FROM (
+#!/bin/bash
+
+echo "Debut : A_OSM_RESEAU_ROUTIER > ROUTE.shp"
+  $LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/'$PAYS/$OUT_EPSG'/A_OSM_RESEAU_ROUTIER/ROUTE.shp' -dialect SQLITE -sql "SELECT * FROM (
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------ ROUTE -----------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
@@ -100,9 +102,13 @@ CASE
   WHEN oneway='yes' THEN 'Inverse'
   WHEN oneway='reversible' THEN 'Réversible'
   ELSE 'NC'
-END AS "SENS"
+END AS "SENS",
+-----------------------------------------
+'OpenStreetMap' AS "SOURCE",
+-----------------------------------------
+SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
 FROM lines WHERE (highway='motorway' OR highway='trunk' OR highway='primary' OR highway='secondary' OR highway='tertiary' OR highway='residential' OR highway='unclassified' OR highway='service' OR highway='motorway_link'OR highway='trunk_link' OR highway='primary_link' OR highway='secondary_link' OR highway='tertiary_link' OR highway='living_street' OR highway='pedestrian' OR highway='track' OR highway='bus_guideway' OR highway='raceway' OR highway='road' OR highway='footway' OR highway='cycleway' OR highway='bridleway' OR highway='steps' OR highway='path' OR highway='proposed' OR highway='construction') AND IsValid(GEOMETRY)=1
 
-)" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config OSM_CONFIG_FILE 'Scripts/A_OSM_RESEAU_ROUTIER/ROUTE_osmconf.ini'
-echo fin
+)" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config CPL_TMPDIR 'data_tmp/' --config OSM_MAX_TMPFILE_SIZE 4096 --config OSM_CONFIG_FILE 'scripts/A_OSM_RESEAU_ROUTIER/ROUTE_osmconf.ini'
+echo "Fin : A_OSM_RESEAU_ROUTIER > ROUTE.shp"

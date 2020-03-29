@@ -1,16 +1,16 @@
 #!/bin/bash
 
-file="./data_temp/F_OSM_VEGETATION/ZONE_VEGETATION.shp"
+file="./data_temp/$PAYS/$OUT_EPSG/F_OSM_VEGETATION/ZONE_VEGETATION.shp"
 
-for i in $(ls "./data_temp/F_OSM_VEGETATION/ZONE_VEGETATION/"*.shp)
+for i in $(ls "./data_temp/$PAYS/$OUT_EPSG/F_OSM_VEGETATION/ZONE_VEGETATION/"*.shp)
 do
 
       if [ -f "$file" ]
       then
-           echo "creating merge"
-           $LINK_OGR -f 'ESRI Shapefile' --config SHAPE_ENCODING $ENCODAGE -lco ENCODING=$ENCODAGE -update -append $file $i -nln ZONE_VEGETATION
+           echo "merge $i"
+           $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON -append $file $i -nln ZONE_VEGETATION
       else
-           echo "merging…… $i"
-           $LINK_OGR -f 'ESRI Shapefile' --config SHAPE_ENCODING $ENCODAGE -lco SPATIAL_INDEX=YES -lco ENCODING=$ENCODAGE $file $i
+           echo "creating merge $i"
+           $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON --config SHAPE_ENCODING $ENCODAGE -lco SPATIAL_INDEX=YES -lco ENCODING=$ENCODAGE $file $i
 fi
 done
