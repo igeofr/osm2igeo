@@ -87,14 +87,18 @@ Une mise à jour sera disponible chaque mois.
         * Y_OSM_ENVIRONNEMENT
     * ils exploitent la puissance d'ogr2ogr pour traiter l'information. Les commandes ogr2ogr sont toutes basées sur l'utilisation du dialect SQL (SQLITE) qui travaille en association avec [le pilote OSM](https://www.gdal.org/drv_osm.html).
     * à chaque script "esclave" est associé un fichier xxx_osmconf.ini
+
+      Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
+
 3. Pour lancer le traitement sur :
     * un pays : `sh /home/osm2igeo/01_OSM2IGEO_SHP.sh BELGIQUE 3812 ALL > /home/osm2igeo/log/$(date +"\%Y\%m")'_BELGIQUE_3812.txt'`
     * une région : `sh /home/osm2igeo/01_OSM2IGEO_SHP.sh FRANCE 2154 11_ILE_DE_FRANCE > /home/osm2igeo/log/$(date +"\%Y\%m")'_FRANCE_2154_11_ILE_DE_FRANCE.txt'`
 
-  Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
+
 
 ## Pistes d'évolution
 * Générer du geopackage (.gpk) en sortie (permettra de s'affranchir des limites du shp : [Switch from Shapefile](http://switchfromshapefile.org))
+* Intégrer le téléchargement dans le script "maître"
 * Créer un wiki pour décrire les couches/requêtes
 * Compléter les métadonnées de chacune des couches
 * Compléter/affiner certaines requêtes
