@@ -19,7 +19,7 @@ name AS "TOPONYME",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE amenity='public_bath' AND bath_type='thermal' AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE amenity='public_bath' AND bath_type='thermal' AND IsValid(st_buffer(GEOMETRY,0))=1
 -----------------------------------------
 UNION
 -----------------------------------------

@@ -30,7 +30,7 @@ END AS "NATURE",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE (landuse='forest' OR natural='scrub' OR natural='wood' OR natural='heath') AND round((st_area(st_transform(GEOMETRY,2154))/10000),2)>0.05 AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE (landuse='forest' OR natural='scrub' OR natural='wood' OR natural='heath') AND round((st_area(st_transform(GEOMETRY,2154))/10000),2)>0.05 AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------

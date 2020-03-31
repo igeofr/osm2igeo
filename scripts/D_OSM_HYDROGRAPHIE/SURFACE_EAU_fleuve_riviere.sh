@@ -27,7 +27,7 @@ END AS "REGIME",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE ((waterway='riverbank') OR (natural='water' AND water='river') OR (waterway='river')) AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE ((waterway='riverbank') OR (natural='water' AND water='river') OR (waterway='river')) AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------

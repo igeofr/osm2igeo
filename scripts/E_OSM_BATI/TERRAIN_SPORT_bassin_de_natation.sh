@@ -19,7 +19,7 @@ GEOMETRY AS "GEOMETRY",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE leisure='swimming_pool' AND access='yes' AND location='outdoor' AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE leisure='swimming_pool' AND access='yes' AND location='outdoor' AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------

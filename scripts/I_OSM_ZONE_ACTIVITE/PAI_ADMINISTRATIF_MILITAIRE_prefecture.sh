@@ -19,7 +19,7 @@ name AS "NOM",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE (amenity='public_building' OR building='yes') AND name LIKE '%Préfecture%' AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE (amenity='public_building' OR building='yes') AND name LIKE '%Préfecture%' AND IsValid(st_buffer(GEOMETRY,0))=1
 -----------------------------------------
 UNION ALL
 -----------------------------------------

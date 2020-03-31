@@ -23,7 +23,7 @@ END AS "NATURE",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE (man_made='gasometer' OR man_made='hot_water_tank' OR man_made='silo' OR man_made='storage_tank') AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE (man_made='gasometer' OR man_made='hot_water_tank' OR man_made='silo' OR man_made='storage_tank') AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------

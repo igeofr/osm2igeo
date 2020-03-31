@@ -19,7 +19,7 @@ name AS "NOM",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE building='yes' AND (name LIKE '%Maison Forestière%' OR name LIKE '%maison forestière%' OR name LIKE '%Maison forestière%') AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE building='yes' AND (name LIKE '%Maison Forestière%' OR name LIKE '%maison forestière%' OR name LIKE '%Maison forestière%') AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------

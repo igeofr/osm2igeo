@@ -19,7 +19,7 @@ name AS "NOM",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE boundary='protected_area' AND (protect_class=3 OR protect_class=4 OR protect_class=5) AND name IS NOT NULL AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE boundary='protected_area' AND (protect_class=3 OR protect_class=4 OR protect_class=5) AND name IS NOT NULL AND IsValid(st_buffer(GEOMETRY,0))=1
 -----------------------------------------
 UNION
 -----------------------------------------

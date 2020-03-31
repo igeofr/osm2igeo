@@ -17,7 +17,7 @@ REPLACE(man_made,'pumping_station','Station de pompage') AS "NATURE",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE man_made='pumping_station' AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE man_made='pumping_station' AND IsValid(st_buffer(GEOMETRY,0))=1
 -----------------------------------------
 UNION
 -----------------------------------------

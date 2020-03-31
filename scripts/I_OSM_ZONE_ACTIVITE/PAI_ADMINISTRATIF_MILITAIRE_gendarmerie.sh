@@ -17,7 +17,7 @@ REPLACE(amenity,'police','Gendarmerie') AS "NATURE",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE (amenity='police' AND (name LIKE 'Gendarmerie%')) AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE (amenity='police' AND (name LIKE 'Gendarmerie%')) AND IsValid(st_buffer(GEOMETRY,0))=1
 -----------------------------------------
 UNION
 -----------------------------------------

@@ -23,7 +23,7 @@ END AS "NATURE",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE (highway='mini_roundabout' OR junction='roundabout') AND IsValid(GEOMETRY)=1 AND (name LIKE 'Giratoire%' OR name LIKE 'Rond-Point%')
+FROM multipolygons WHERE (highway='mini_roundabout' OR junction='roundabout') AND IsValid(st_buffer(GEOMETRY,0))=1 AND (name LIKE 'Giratoire%' OR name LIKE 'Rond-Point%')
 -----------------------------------------
 UNION
 -----------------------------------------

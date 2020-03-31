@@ -19,7 +19,7 @@ name AS "NOM",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE boundary='protected_area' AND protection_title='parc naturel marin' AND IsValid(GEOMETRY)=1
+FROM multipolygons WHERE boundary='protected_area' AND protection_title='parc naturel marin' AND IsValid(st_buffer(GEOMETRY,0))=1
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
