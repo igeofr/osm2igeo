@@ -110,7 +110,7 @@ fi
 
 #-------------------------------------------------------------------------------
 #Variables
-export REPER=/Users/florianboret/Desktop/OSM2IGEO_V3
+export REPER=/home/osm2igeo
 export PAYS=$a_pays
 export FORMAT_SIG=$format
 cd $REPER/data_in/$PAYS/
