@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."t_osm_toponymes_toponyme_divers" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 't_osm_toponymes_toponyme_divers' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ( "ogc_fid" SERIAL, CONSTRAINT "t_osm_toponymes_toponyme_divers_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','t_osm_toponymes_toponyme_divers','geom',2154,'GEOMETRY',2);
+CREATE INDEX "t_osm_toponymes_toponyme_divers_geom_geom_idx" ON "osm2igeo"."t_osm_toponymes_toponyme_divers" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_toponyme_divers" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'b_osm_voies_ferrees_et_autres_toponyme_ferre' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ( "ogc_fid" SERIAL, CONSTRAINT "b_osm_voies_ferrees_et_autres_toponyme_ferre_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','b_osm_voies_ferrees_et_autres_toponyme_ferre','geom',2154,'GEOMETRY',2);
+CREATE INDEX "b_osm_voies_ferrees_et_autres_toponyme_ferre_geom_geom_idx" ON "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."b_osm_voies_ferrees_et_autres_toponyme_ferre" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

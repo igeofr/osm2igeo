@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."y_osm_environnement_aire_protegee" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'y_osm_environnement_aire_protegee' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ( "ogc_fid" SERIAL, CONSTRAINT "y_osm_environnement_aire_protegee_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','y_osm_environnement_aire_protegee','geom',2154,'GEOMETRY',2);
+CREATE INDEX "y_osm_environnement_aire_protegee_geom_geom_idx" ON "osm2igeo"."y_osm_environnement_aire_protegee" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."y_osm_environnement_aire_protegee" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

@@ -43,8 +43,9 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 
 ## Formats
 
-* Shapefile
-* Geopackage (A venir)
+* [Shapefile](https://gdal.org/drivers/vector/shapefile.html)
+* [Geopackage](https://gdal.org/drivers/vector/gpkg.html)
+* SQL ([PGDump](https://gdal.org/drivers/vector/pgdump.html))
 
 *Il est possible d'envisager d'autres formats si le besoin se fait sentir.*
 
@@ -71,8 +72,8 @@ Une mise à jour sera disponible chaque mois.
 
 1. Les données OSM sont récupérées au format .pbf depuis le site [Geofabrik](https://download.geofabrik.de/europe/france.html)
     * les script permettant le téléchargement des données : 00_Download
-2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp (ou prochainement .gpk)
-    *  un script "maître" : 01_OSM2IGEO_SHP
+2. Un script "maître" fait appel à une série de scripts "esclaves" et qui font eux-mêmes appel à ogr2ogr pour mettre en forme et convertir la donnée au format .shp, .gpk ou encore .sql
+    *  un script "maître" : 01_OSM2IGEO
     *  les scripts "esclaves" sont classés par grandes catégories :
         * A_OSM_RESEAU_ROUTIER
         * B_OSM_VOIES_FERREES_ET_AUTRES
@@ -91,13 +92,11 @@ Une mise à jour sera disponible chaque mois.
       Plus d'infos sur les points 3 et 4 : [OpenStreetMap – Convertir les données au format SHP](https://wiki.cartocite.fr/doku.php?id=openstreetmap:geomatique:convertir_les_donnees_au_format_shp)
 
 3. Pour lancer le traitement sur :
-    * un pays : `sh /home/osm2igeo/01_OSM2IGEO_SHP.sh BELGIQUE 3812 ALL > /home/osm2igeo/log/$(date +"\%Y\%m")'_BELGIQUE_3812.txt'`
-    * une région : `sh /home/osm2igeo/01_OSM2IGEO_SHP.sh FRANCE 2154 11_ILE_DE_FRANCE > /home/osm2igeo/log/$(date +"\%Y\%m")'_FRANCE_2154_11_ILE_DE_FRANCE.txt'`
-
-
+    * un pays : `sh /home/osm2igeo/01_OSM2IGEO.sh BELGIQUE 3812 ALL SHP > /home/osm2igeo/log/$(date +"\%Y\%m")'_BELGIQUE_3812.txt'`
+    * une région : `sh /home/osm2igeo/01_OSM2IGEO.sh FRANCE 2154 11_ILE_DE_FRANCE SQL > /home/osm2igeo/log/$(date +"\%Y\%m")'_FRANCE_2154_11_ILE_DE_FRANCE.txt'`
 
 ## Pistes d'évolution
-* Générer du geopackage (.gpk) en sortie (permettra de s'affranchir des limites du shp : [Switch from Shapefile](http://switchfromshapefile.org))
+* ~~Générer du geopackage (.gpk) en sortie (permettra de s'affranchir des limites du shp : [Switch from Shapefile](http://switchfromshapefile.org))~~
 * Intégrer le téléchargement des fichiers .pbf dans le script "maître"
 * Créer un wiki pour décrire les couches/requêtes
 * Compléter les métadonnées de chacune des couches

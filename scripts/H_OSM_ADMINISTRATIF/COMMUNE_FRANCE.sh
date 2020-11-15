@@ -1,15 +1,19 @@
 #!/bin/bash
 
-echo "Debut : H_OSM_ADMINISTRATIF > COMMUNE.shp"
-$LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/'$PAYS/$OUT_EPSG'/H_OSM_ADMINISTRATIF/COMMUNE.shp' -dialect SQLITE -sql "SELECT * FROM (
-------------------------------------------------------------------------------------------------------------
------------------------------------- COMMUNE ---------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------
-SELECT
+# 2019-2020 Florian Boret
+# https://github.com/igeofr/osm2igeo
+# https://creativecommons.org/licenses/by-sa/4.0/deed.fr
+#------------------------------------------------------------------------------------------------------------
+var_group=H_OSM_ADMINISTRATIF
+var_file=COMMUNE
+#------------------------------------------------------------------------------------------------------------
+#------------------------------------ COMMUNE ---------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------
+export requete="SELECT
 -----------------------------------------
 coalesce('r'||osm_id,'w'||osm_way_id)  AS "ID",
 -----------------------------------------
-GEOMETRY AS "GEOMETRY",
+ST_Buffer(GEOMETRY,0) AS "GEOMETRY",
 -----------------------------------------
 upper(
 replace(
@@ -255,9 +259,25 @@ END AS "POPUL",
 -----------------------------------------
 SUBSTR(osm_timestamp, 1, 10) AS "DATE_MAJ"
 -----------------------------------------
-FROM multipolygons WHERE boundary='administrative' AND admin_level='8' AND (SUBSTR(ref_insee,1,2)='01' OR SUBSTR(ref_insee,1,2)='02' OR SUBSTR(ref_insee,1,2)='03' OR SUBSTR(ref_insee,1,2)='04' OR SUBSTR(ref_insee,1,2)='05' OR SUBSTR(ref_insee,1,2)='06' OR SUBSTR(ref_insee,1,2)='07' OR SUBSTR(ref_insee,1,2)='08' OR SUBSTR(ref_insee,1,2)='09' OR SUBSTR(ref_insee,1,2)='10' OR SUBSTR(ref_insee,1,2)='11' OR SUBSTR(ref_insee,1,2)='12' OR SUBSTR(ref_insee,1,2)='13' OR SUBSTR(ref_insee,1,2)='14' OR SUBSTR(ref_insee,1,2)='15' OR SUBSTR(ref_insee,1,2)='16' OR SUBSTR(ref_insee,1,2)='17' OR SUBSTR(ref_insee,1,2)='18' OR SUBSTR(ref_insee,1,2)='19' OR SUBSTR(ref_insee,1,2)='2A' OR SUBSTR(ref_insee,1,2)='2B' OR SUBSTR(ref_insee,1,2)='21' OR SUBSTR(ref_insee,1,2)='22' OR SUBSTR(ref_insee,1,2)='23' OR SUBSTR(ref_insee,1,2)='24' OR SUBSTR(ref_insee,1,2)='25' OR SUBSTR(ref_insee,1,2)='26' OR SUBSTR(ref_insee,1,2)='27' OR SUBSTR(ref_insee,1,2)='28' OR SUBSTR(ref_insee,1,2)='29' OR SUBSTR(ref_insee,1,2)='30' OR SUBSTR(ref_insee,1,2)='31' OR SUBSTR(ref_insee,1,2)='32' OR SUBSTR(ref_insee,1,2)='33' OR SUBSTR(ref_insee,1,2)='34' OR SUBSTR(ref_insee,1,2)='35' OR SUBSTR(ref_insee,1,2)='36' OR SUBSTR(ref_insee,1,2)='37' OR SUBSTR(ref_insee,1,2)='38' OR SUBSTR(ref_insee,1,2)='39' OR SUBSTR(ref_insee,1,2)='40' OR SUBSTR(ref_insee,1,2)='41' OR SUBSTR(ref_insee,1,2)='42' OR SUBSTR(ref_insee,1,2)='43' OR SUBSTR(ref_insee,1,2)='44' OR SUBSTR(ref_insee,1,2)='45' OR SUBSTR(ref_insee,1,2)='46' OR SUBSTR(ref_insee,1,2)='47' OR SUBSTR(ref_insee,1,2)='48' OR SUBSTR(ref_insee,1,2)='49' OR SUBSTR(ref_insee,1,2)='50' OR SUBSTR(ref_insee,1,2)='51' OR SUBSTR(ref_insee,1,2)='52' OR SUBSTR(ref_insee,1,2)='53' OR SUBSTR(ref_insee,1,2)='54' OR SUBSTR(ref_insee,1,2)='55' OR SUBSTR(ref_insee,1,2)='56' OR SUBSTR(ref_insee,1,2)='57' OR SUBSTR(ref_insee,1,2)='58' OR SUBSTR(ref_insee,1,2)='59' OR SUBSTR(ref_insee,1,2)='60' OR SUBSTR(ref_insee,1,2)='61' OR SUBSTR(ref_insee,1,2)='62' OR SUBSTR(ref_insee,1,2)='63' OR SUBSTR(ref_insee,1,2)='64' OR SUBSTR(ref_insee,1,2)='65' OR SUBSTR(ref_insee,1,2)='66' OR SUBSTR(ref_insee,1,2)='67' OR SUBSTR(ref_insee,1,2)='68' OR SUBSTR(ref_insee,1,2)='69' OR SUBSTR(ref_insee,1,2)='70' OR SUBSTR(ref_insee,1,2)='71' OR SUBSTR(ref_insee,1,2)='72' OR SUBSTR(ref_insee,1,2)='73' OR SUBSTR(ref_insee,1,2)='74' OR SUBSTR(ref_insee,1,2)='75' OR SUBSTR(ref_insee,1,2)='76' OR SUBSTR(ref_insee,1,2)='77' OR SUBSTR(ref_insee,1,2)='78' OR SUBSTR(ref_insee,1,2)='79' OR SUBSTR(ref_insee,1,2)='80' OR SUBSTR(ref_insee,1,2)='81' OR SUBSTR(ref_insee,1,2)='82' OR SUBSTR(ref_insee,1,2)='83' OR SUBSTR(ref_insee,1,2)='84' OR SUBSTR(ref_insee,1,2)='85' OR SUBSTR(ref_insee,1,2)='86' OR SUBSTR(ref_insee,1,2)='87' OR SUBSTR(ref_insee,1,2)='88' OR SUBSTR(ref_insee,1,2)='89' OR SUBSTR(ref_insee,1,2)='90' OR SUBSTR(ref_insee,1,2)='91' OR SUBSTR(ref_insee,1,2)='92' OR SUBSTR(ref_insee,1,2)='93' OR SUBSTR(ref_insee,1,2)='94' OR SUBSTR(ref_insee,1,2)='95')
-------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------
-)" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config CPL_TMPDIR 'data_tmp/' --config OSM_MAX_TMPFILE_SIZE 4096 --config OSM_CONFIG_FILE 'scripts/H_OSM_ADMINISTRATIF/COMMUNE_FRANCE_osmconf.ini'
-echo "Fin : H_OSM_ADMINISTRATIF > COMMUNE.shp"
+FROM multipolygons WHERE boundary='administrative' AND admin_level='8' AND (SUBSTR(ref_insee,1,2)='01' OR SUBSTR(ref_insee,1,2)='02' OR SUBSTR(ref_insee,1,2)='03' OR SUBSTR(ref_insee,1,2)='04' OR SUBSTR(ref_insee,1,2)='05' OR SUBSTR(ref_insee,1,2)='06' OR SUBSTR(ref_insee,1,2)='07' OR SUBSTR(ref_insee,1,2)='08' OR SUBSTR(ref_insee,1,2)='09' OR SUBSTR(ref_insee,1,2)='10' OR SUBSTR(ref_insee,1,2)='11' OR SUBSTR(ref_insee,1,2)='12' OR SUBSTR(ref_insee,1,2)='13' OR SUBSTR(ref_insee,1,2)='14' OR SUBSTR(ref_insee,1,2)='15' OR SUBSTR(ref_insee,1,2)='16' OR SUBSTR(ref_insee,1,2)='17' OR SUBSTR(ref_insee,1,2)='18' OR SUBSTR(ref_insee,1,2)='19' OR SUBSTR(ref_insee,1,2)='2A' OR SUBSTR(ref_insee,1,2)='2B' OR SUBSTR(ref_insee,1,2)='21' OR SUBSTR(ref_insee,1,2)='22' OR SUBSTR(ref_insee,1,2)='23' OR SUBSTR(ref_insee,1,2)='24' OR SUBSTR(ref_insee,1,2)='25' OR SUBSTR(ref_insee,1,2)='26' OR SUBSTR(ref_insee,1,2)='27' OR SUBSTR(ref_insee,1,2)='28' OR SUBSTR(ref_insee,1,2)='29' OR SUBSTR(ref_insee,1,2)='30' OR SUBSTR(ref_insee,1,2)='31' OR SUBSTR(ref_insee,1,2)='32' OR SUBSTR(ref_insee,1,2)='33' OR SUBSTR(ref_insee,1,2)='34' OR SUBSTR(ref_insee,1,2)='35' OR SUBSTR(ref_insee,1,2)='36' OR SUBSTR(ref_insee,1,2)='37' OR SUBSTR(ref_insee,1,2)='38' OR SUBSTR(ref_insee,1,2)='39' OR SUBSTR(ref_insee,1,2)='40' OR SUBSTR(ref_insee,1,2)='41' OR SUBSTR(ref_insee,1,2)='42' OR SUBSTR(ref_insee,1,2)='43' OR SUBSTR(ref_insee,1,2)='44' OR SUBSTR(ref_insee,1,2)='45' OR SUBSTR(ref_insee,1,2)='46' OR SUBSTR(ref_insee,1,2)='47' OR SUBSTR(ref_insee,1,2)='48' OR SUBSTR(ref_insee,1,2)='49' OR SUBSTR(ref_insee,1,2)='50' OR SUBSTR(ref_insee,1,2)='51' OR SUBSTR(ref_insee,1,2)='52' OR SUBSTR(ref_insee,1,2)='53' OR SUBSTR(ref_insee,1,2)='54' OR SUBSTR(ref_insee,1,2)='55' OR SUBSTR(ref_insee,1,2)='56' OR SUBSTR(ref_insee,1,2)='57' OR SUBSTR(ref_insee,1,2)='58' OR SUBSTR(ref_insee,1,2)='59' OR SUBSTR(ref_insee,1,2)='60' OR SUBSTR(ref_insee,1,2)='61' OR SUBSTR(ref_insee,1,2)='62' OR SUBSTR(ref_insee,1,2)='63' OR SUBSTR(ref_insee,1,2)='64' OR SUBSTR(ref_insee,1,2)='65' OR SUBSTR(ref_insee,1,2)='66' OR SUBSTR(ref_insee,1,2)='67' OR SUBSTR(ref_insee,1,2)='68' OR SUBSTR(ref_insee,1,2)='69' OR SUBSTR(ref_insee,1,2)='70' OR SUBSTR(ref_insee,1,2)='71' OR SUBSTR(ref_insee,1,2)='72' OR SUBSTR(ref_insee,1,2)='73' OR SUBSTR(ref_insee,1,2)='74' OR SUBSTR(ref_insee,1,2)='75' OR SUBSTR(ref_insee,1,2)='76' OR SUBSTR(ref_insee,1,2)='77' OR SUBSTR(ref_insee,1,2)='78' OR SUBSTR(ref_insee,1,2)='79' OR SUBSTR(ref_insee,1,2)='80' OR SUBSTR(ref_insee,1,2)='81' OR SUBSTR(ref_insee,1,2)='82' OR SUBSTR(ref_insee,1,2)='83' OR SUBSTR(ref_insee,1,2)='84' OR SUBSTR(ref_insee,1,2)='85' OR SUBSTR(ref_insee,1,2)='86' OR SUBSTR(ref_insee,1,2)='87' OR SUBSTR(ref_insee,1,2)='88' OR SUBSTR(ref_insee,1,2)='89' OR SUBSTR(ref_insee,1,2)='90' OR SUBSTR(ref_insee,1,2)='91' OR SUBSTR(ref_insee,1,2)='92' OR SUBSTR(ref_insee,1,2)='93' OR SUBSTR(ref_insee,1,2)='94' OR SUBSTR(ref_insee,1,2)='95') AND ST_IsValid(ST_Buffer(GEOMETRY,0))"
+#------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------
+if [ "$FORMAT_SIG" = "SHP" ]
+then
+  echo "Debut : $var_group > $var_file.shp"
+  $LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'ESRI Shapefile' 'data_temp/'$PAYS'/'$OUT_EPSG'/'$var_group'/'$var_file'.shp' -dialect SQLITE -sql "SELECT * FROM ($(echo $requete | sed -e 's/-//g'))" $DATA_IN -lco ENCODING=$ENCODAGE -lco SPATIAL_INDEX=YES --debug ON -skipfailures --config CPL_TMPDIR 'data_tmp/' --config OSM_MAX_TMPFILE_SIZE 4096 -oo CONFIG_FILE='scripts/'$var_group'/'$var_file'_FRANCE_osmconf.ini'
+  echo "Fin : $var_group > $var_file.shp"
+fi
+if [ "$FORMAT_SIG" = "GPKG" ]
+then
+  echo "Debut : $var_group > $var_file"
+  $LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f 'GPKG' -update -append 'data_temp/'$PAYS'/'$OUT_EPSG'/'$var_group'.gpkg' -nln $var_file -dialect SQLITE -sql "SELECT * FROM ($(echo $requete | sed -e 's/-//g'))" $DATA_IN -lco SPATIAL_INDEX=YES --debug ON -skipfailures -oo CONFIG_FILE='scripts/'$var_group'/'$var_file'_FRANCE_osmconf.ini'
+  echo "Fin : $var_group > $var_file"
+fi
+if [ "$FORMAT_SIG" = "SQL" ]
+then
+  echo "Debut : $var_group > $var_file"
+  $LINK_OGR -progress -s_srs EPSG:4326 -t_srs EPSG:$OUT_EPSG -f PGDump 'data_temp/'$PAYS'/'$OUT_EPSG'/'$var_group'/'$var_file'.sql' -nln $var_group'_'$var_file -dialect SQLITE -sql "SELECT * FROM ($(echo $requete | sed -e 's/-//g'))" $DATA_IN --config PG_USE_COPY YES --debug ON -skipfailures -lco SRID=2154 -lco SCHEMA=osm2igeo -lco GEOMETRY_NAME=geom -oo CONFIG_FILE='scripts/'$var_group'/'$var_file'_FRANCE_osmconf.ini'
+  echo "Fin : $var_group > $var_file"
+fi

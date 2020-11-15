@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."i_osm_zone_activite_pai_hydrographie" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'i_osm_zone_activite_pai_hydrographie' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ( "ogc_fid" SERIAL, CONSTRAINT "i_osm_zone_activite_pai_hydrographie_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','i_osm_zone_activite_pai_hydrographie','geom',2154,'GEOMETRY',2);
+CREATE INDEX "i_osm_zone_activite_pai_hydrographie_geom_geom_idx" ON "osm2igeo"."i_osm_zone_activite_pai_hydrographie" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_hydrographie" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

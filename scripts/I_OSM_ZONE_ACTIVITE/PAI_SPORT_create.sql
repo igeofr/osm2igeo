@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."i_osm_zone_activite_pai_sport" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'i_osm_zone_activite_pai_sport' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ( "ogc_fid" SERIAL, CONSTRAINT "i_osm_zone_activite_pai_sport_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','i_osm_zone_activite_pai_sport','geom',2154,'GEOMETRY',2);
+CREATE INDEX "i_osm_zone_activite_pai_sport_geom_geom_idx" ON "osm2igeo"."i_osm_zone_activite_pai_sport" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_sport" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

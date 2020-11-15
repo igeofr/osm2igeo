@@ -1,16 +1,38 @@
 #!/bin/bash
 
-file="./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS.shp"
+# 2019-2020 Florian Boret
+# https://github.com/igeofr/osm2igeo
+# https://creativecommons.org/licenses/by-sa/4.0/deed.fr
 
-for i in $(ls "./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS/"*.shp)
-do
+if [ "$FORMAT_SIG" = "SHP" ]
+then
+  file="./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS.shp"
 
-      if [ -f "$file" ]
+  for i in $(ls "./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS/"*.shp)
+  do
+    if [ -f "$file" ]
       then
-           echo "merge $i"
-           $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON -append $file $i -nln PAI_CULTURE_LOISIRS
+        echo "merge $i"
+        $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON -append $file $i -nln PAI_CULTURE_LOISIRS
       else
-           echo "creating merge $i"
-           $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON --config SHAPE_ENCODING $ENCODAGE -lco SPATIAL_INDEX=YES -lco ENCODING=$ENCODAGE $file $i
+        echo "creating merge $i"
+        $LINK_OGR -progress -f 'ESRI Shapefile' --debug ON --config SHAPE_ENCODING $ENCODAGE -lco SPATIAL_INDEX=YES -lco ENCODING=$ENCODAGE $file $i
+    fi
+  done
 fi
-done
+if [ "$FORMAT_SIG" = "GPKG" ]
+then
+  file="./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE.gpkg"
+
+  for i in $(ls "./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS/"*.gpkg)
+  do
+
+    echo "merge $i"
+    $LINK_OGR -progress -f 'GPKG' -update -append --debug ON -lco SPATIAL_INDEX=YES $file $i $(basename "${i%.*}") -nln PAI_CULTURE_LOISIRS
+  done
+fi
+if [ "$FORMAT_SIG" = "SQL" ]
+then
+  file="./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS.sql"
+  ( cat "./scripts_V3/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/I_OSM_ZONE_ACTIVITE/PAI_CULTURE_LOISIRS/"*.sql) > $file
+fi

@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 't_osm_toponymes_lieu_dit_non_habite' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ( "ogc_fid" SERIAL, CONSTRAINT "t_osm_toponymes_lieu_dit_non_habite_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','t_osm_toponymes_lieu_dit_non_habite','geom',2154,'GEOMETRY',2);
+CREATE INDEX "t_osm_toponymes_lieu_dit_non_habite_geom_geom_idx" ON "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."t_osm_toponymes_lieu_dit_non_habite" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

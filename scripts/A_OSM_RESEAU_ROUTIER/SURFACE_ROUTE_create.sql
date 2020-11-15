@@ -1,0 +1,13 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."a_osm_reseau_routier_surface_route" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'a_osm_reseau_routier_surface_route' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."a_osm_reseau_routier_surface_route" ( "ogc_fid" SERIAL, CONSTRAINT "a_osm_reseau_routier_surface_route_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','a_osm_reseau_routier_surface_route','geom',2154,'GEOMETRY',2);
+CREATE INDEX "a_osm_reseau_routier_surface_route_geom_geom_idx" ON "osm2igeo"."a_osm_reseau_routier_surface_route" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."a_osm_reseau_routier_surface_route" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."a_osm_reseau_routier_surface_route" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."a_osm_reseau_routier_surface_route" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."a_osm_reseau_routier_surface_route" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

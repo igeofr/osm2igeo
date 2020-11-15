@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."f_osm_vegetation_zone_vegetation" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'f_osm_vegetation_zone_vegetation' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ( "ogc_fid" SERIAL, CONSTRAINT "f_osm_vegetation_zone_vegetation_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','f_osm_vegetation_zone_vegetation','geom',2154,'GEOMETRY',2);
+CREATE INDEX "f_osm_vegetation_zone_vegetation_geom_geom_idx" ON "osm2igeo"."f_osm_vegetation_zone_vegetation" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."f_osm_vegetation_zone_vegetation" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;

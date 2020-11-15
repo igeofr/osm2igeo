@@ -1,0 +1,14 @@
+SET standard_conforming_strings = OFF;
+CREATE SCHEMA "osm2igeo";
+DROP TABLE IF EXISTS "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" CASCADE;
+DELETE FROM geometry_columns WHERE f_table_name = 'i_osm_zone_activite_pai_espace_naturel' AND f_table_schema = 'osm2igeo';
+BEGIN;
+CREATE TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ( "ogc_fid" SERIAL, CONSTRAINT "i_osm_zone_activite_pai_espace_naturel_pk" PRIMARY KEY ("ogc_fid") );
+SELECT AddGeometryColumn('osm2igeo','i_osm_zone_activite_pai_espace_naturel','geom',2154,'GEOMETRY',2);
+CREATE INDEX "i_osm_zone_activite_pai_espace_naturel_geom_geom_idx" ON "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" USING GIST ("geom");
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ADD COLUMN "id" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ADD COLUMN "nom" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ADD COLUMN "nature" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ADD COLUMN "source" VARCHAR;
+ALTER TABLE "osm2igeo"."i_osm_zone_activite_pai_espace_naturel" ADD COLUMN "date_maj" VARCHAR;
+COMMIT;
