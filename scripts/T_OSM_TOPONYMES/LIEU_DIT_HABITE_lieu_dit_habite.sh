@@ -36,7 +36,7 @@ GEOMETRY AS "GEOMETRY",
 -----------------------------------------
 name AS "NOM",
 -----------------------------------------
-'Lieu-dit habité' AS "NATURE",
+'Lieu dit habité' AS "NATURE",
 -----------------------------------------
 'OpenStreetMap' AS "SOURCE",
 -----------------------------------------

@@ -926,7 +926,7 @@ do
         fi
     elif [ "$FORMAT_SIG" = "SQL" ];
       then
-        cp 'attachement/IMPORT_PG.sql' data_out/$PAYS/$DATE_T'_OSM2IGEO_'${file%%.*}'_'$FORMAT_SIG$NZ/IMPORT_PG.sql
+        cp 'attachement/Z_IMPORT_PG.sql' data_out/$PAYS/$DATE_T'_OSM2IGEO_'${file%%.*}'_'$FORMAT_SIG$NZ/Z_IMPORT_PG.sql
     else
         echo "SQL >> AUCUN PROJET"
     fi

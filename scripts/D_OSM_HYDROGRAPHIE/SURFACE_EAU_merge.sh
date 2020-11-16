@@ -33,5 +33,5 @@ fi
 if [ "$FORMAT_SIG" = "SQL" ]
 then
   file="./data_temp/$PAYS/$OUT_EPSG/D_OSM_HYDROGRAPHIE/SURFACE_EAU.sql"
-  ( cat "./scripts_V3/D_OSM_HYDROGRAPHIE/SURFACE_EAU_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/D_OSM_HYDROGRAPHIE/SURFACE_EAU/"*.sql) > $file
+  ( cat "./scripts/D_OSM_HYDROGRAPHIE/SURFACE_EAU_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/D_OSM_HYDROGRAPHIE/SURFACE_EAU/"*.sql) > $file
 fi

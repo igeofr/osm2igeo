@@ -34,5 +34,5 @@ fi
 if [ "$FORMAT_SIG" = "SQL" ]
 then
   file="./data_temp/$PAYS/$OUT_EPSG/X_OSM_TOPO/TOPO_POI.sql"
-  ( cat "./scripts_V3/X_OSM_TOPO/TOPO_POI_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/X_OSM_TOPO/TOPO_POI/"*.sql) > $file
+  ( cat "./scripts/X_OSM_TOPO/TOPO_POI_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/X_OSM_TOPO/TOPO_POI/"*.sql) > $file
 fi

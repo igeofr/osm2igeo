@@ -33,5 +33,5 @@ fi
 if [ "$FORMAT_SIG" = "SQL" ]
 then
   file="./data_temp/$PAYS/$OUT_EPSG/T_OSM_TOPONYMES/TOPONYME_DIVERS.sql"
-  ( cat "./scripts_V3/T_OSM_TOPONYMES/TOPONYME_DIVERS_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/T_OSM_TOPONYMES/TOPONYME_DIVERS/"*.sql) > $file
+  ( cat "./scripts/T_OSM_TOPONYMES/TOPONYME_DIVERS_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/T_OSM_TOPONYMES/TOPONYME_DIVERS/"*.sql) > $file
 fi

@@ -32,5 +32,5 @@ fi
 if [ "$FORMAT_SIG" = "SQL" ]
 then
   file="./data_temp/$PAYS/$OUT_EPSG/F_OSM_VEGETATION/ZONE_VEGETATION.sql"
-  ( cat "./scripts_V3/F_OSM_VEGETATION/ZONE_VEGETATION_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/F_OSM_VEGETATION/ZONE_VEGETATION/"*.sql) > $file
+  ( cat "./scripts/F_OSM_VEGETATION/ZONE_VEGETATION_create.sql" ; cat "./data_temp/$PAYS/$OUT_EPSG/F_OSM_VEGETATION/ZONE_VEGETATION/"*.sql) > $file
 fi
