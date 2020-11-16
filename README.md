@@ -45,7 +45,7 @@ Les données OSM utilisées pour générer ces fichiers régionaux proviennent d
 
 * [Shapefile](https://gdal.org/drivers/vector/shapefile.html)
 * [Geopackage](https://gdal.org/drivers/vector/gpkg.html)
-* SQL ([PGDump](https://gdal.org/drivers/vector/pgdump.html) - Utiliser la commande suivante pour importer les données PGDump: `psql -h hote -p 5432 -U user -d database -f IMPORT_PG.sql`)
+* SQL - [PGDump](https://gdal.org/drivers/vector/pgdump.html) (Utiliser la commande suivante pour importer les données dans PostgreSQL: `psql -h hote -p 5432 -U user -d database -f IMPORT_PG.sql`)
 
 *Il est possible d'envisager d'autres formats si le besoin se fait sentir.*
 
